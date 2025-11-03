@@ -101,6 +101,20 @@
 
 ### 迭代1：虚拟环境准备
 
+#### 🎯 学习目标
+
+通过本迭代，您将学会：
+- 理解虚拟环境的作用和必要性
+- 掌握使用venv创建Python虚拟环境的方法
+- 学会使用pip管理Python包依赖
+- 建立项目环境隔离的良好开发习惯
+
+#### 📚 先决知识要求
+
+- 已安装Python 3.x（建议3.8+）
+- 了解命令行基本操作（cd、ls等命令）
+- 无需任何Python编程经验
+
 #### 📝 业务需求
 
 为Python数据分析项目搭建独立的开发环境，安装必要的依赖包（pandas和openpyxl），确保项目运行环境的隔离性和可复现性。
@@ -117,11 +131,26 @@
 - pandas是数据分析的行业标准库
 - openpyxl是pandas读取.xlsx文件的依赖
 
-#### ✅ 预期成果
+#### ✅ 验收标准
 
-1. 项目根目录下存在 `venv/` 文件夹
-2. 运行 `./venv/bin/python --version` 显示 Python 版本（如 Python 3.13.5）
-3. 运行 `./venv/bin/pip list` 可以看到已安装的 pandas 和 openpyxl
+**必须满足以下所有条件才算完成本迭代**：
+
+1. **环境创建验证**：
+   - 项目根目录下存在 `venv/` 文件夹
+   - 文件夹内包含 `bin/`（Mac/Linux）或 `Scripts/`（Windows）子目录
+
+2. **Python版本验证**：
+   - 运行命令：`./venv/bin/python --version`（Mac/Linux）或 `venv\Scripts\python --version`（Windows）
+   - 终端输出显示Python版本号，例如：`Python 3.13.5` 或 `Python 3.11.x`
+
+3. **依赖包验证**：
+   - 运行命令：`./venv/bin/pip list`
+   - 终端输出的包列表中包含：
+     - `pandas` (版本2.0+)
+     - `openpyxl` (版本3.0+)
+
+4. **环境激活测试**（可选但推荐）：
+   - 激活虚拟环境后，命令行提示符前出现 `(venv)` 标记
 
 #### 💡 技术要点
 
@@ -133,6 +162,21 @@
 ---
 
 ### 迭代2：数据探索与理解
+
+#### 🎯 学习目标
+
+通过本迭代，您将学会：
+- 使用pandas读取Excel文件的方法
+- 掌握DataFrame的基本操作（head, info, describe, value_counts）
+- 理解探索性数据分析（EDA）的重要性和方法
+- 学会编写Python脚本并通过虚拟环境运行
+
+#### 📚 先决知识要求
+
+- 已完成迭代1（虚拟环境已搭建）
+- 项目根目录下有Excel数据文件：`first-80-rows-agentic_ai_performance_dataset_20250622.xlsx`
+- 了解基本的数据概念（行、列、数据类型）
+- 无需pandas经验，本迭代将从零开始学习
 
 #### 📝 业务需求
 
@@ -151,15 +195,37 @@
 - 先理解数据再分析是数据科学的基本流程
 - 探索性数据分析（EDA）帮助发现数据特征和潜在问题
 
-#### ✅ 预期成果
+#### ✅ 验收标准
 
-创建 `explore_data.py` 脚本，运行后终端输出：
-1. 数据集基本信息：80行 × 26列
-2. 关键列的数据类型（agent_type, multimodal_capability, model_architecture, task_category, bias_detection_score）
-3. 分类列的分布情况（如16种agent_type，10种model_architecture）
-4. 数值列的统计信息（如bias_detection_score的范围）
+**必须满足以下所有条件才算完成本迭代**：
 
-**示例输出**：
+1. **文件创建验证**：
+   - 项目根目录下存在 `explore_data.py` 文件
+   - 文件包含pandas导入语句和Excel读取代码
+
+2. **脚本运行验证**：
+   - 运行命令：`./venv/bin/python explore_data.py`
+   - 脚本无报错，成功执行完成
+
+3. **数据读取验证**：
+   - 终端输出显示：**总记录数：80行**
+   - 终端输出显示：**总列数：26列**
+
+4. **关键列识别验证**：
+   - 输出中能看到以下5个关键列的信息：
+     - `agent_type`（对象类型）
+     - `multimodal_capability`（布尔类型）
+     - `model_architecture`（对象类型）
+     - `task_category`（对象类型）
+     - `bias_detection_score`（浮点类型）
+
+5. **数据分布验证**：
+   - 输出显示 `agent_type` 有**16种**不同的类型
+   - 输出显示 `multimodal_capability` 中True约有**12个**，False约有**68个**
+   - 输出显示 `model_architecture` 有**10种**不同的架构
+   - 输出显示 `bias_detection_score` 的数值范围在**0.69-0.83**之间
+
+**示例终端输出**（作为参考）：
 ```
 === DATASET EXPLORATION ===
 Total records: 80
@@ -191,6 +257,20 @@ Key columns for business questions:
 
 ### 迭代3：下载并理解Chart.js库
 
+#### 🎯 学习目标
+
+通过本迭代，您将学会：
+- 理解前端图表库的作用和选型考虑
+- 掌握从CDN下载JavaScript库的方法
+- 了解UMD模块格式和文件压缩的概念
+- 理解离线可用（无外部依赖）的重要性
+
+#### 📚 先决知识要求
+
+- 已完成迭代1-2（Python环境和数据探索）
+- 了解基本的命令行操作（curl或浏览器下载）
+- 无需JavaScript经验，本迭代只是下载文件
+
 #### 📝 业务需求
 
 获取专业的图表可视化工具 Chart.js，将其下载到本地，为后续在HTML中内嵌使用做准备。理解Chart.js的基本概念和版本选择。
@@ -207,11 +287,25 @@ Key columns for business questions:
 - 支持内嵌（满足"无外部依赖"的需求）
 - API设计友好，适合初学者
 
-#### ✅ 预期成果
+#### ✅ 验收标准
 
-1. 项目根目录下存在 `chartjs-4.4.0.js` 文件（约200KB）
-2. 使用 `ls -lh chartjs-4.4.0.js` 确认文件大小
-3. 打开文件可以看到压缩后的JavaScript代码开头包含版本信息：`Chart.js v4.4.0`
+**必须满足以下所有条件才算完成本迭代**：
+
+1. **文件存在验证**：
+   - 项目根目录下存在 `chartjs-4.4.0.js` 文件
+
+2. **文件大小验证**：
+   - 运行命令：`ls -lh chartjs-4.4.0.js`
+   - 终端显示文件大小约为**200KB**（在190KB-210KB之间均正常）
+
+3. **版本信息验证**：
+   - 运行命令：`head -5 chartjs-4.4.0.js`
+   - 输出的前几行注释中包含：`Chart.js v4.4.0`
+
+4. **文件完整性验证**：
+   - 运行命令：`wc -l chartjs-4.4.0.js`
+   - 文件为压缩版，通常只有1-5行（压缩后代码在一行）
+   - 文件开头应该是 `/*!` 或类似的注释标记
 
 #### 💡 技术要点
 
@@ -223,6 +317,22 @@ Key columns for business questions:
 ---
 
 ### 迭代4：创建HTML基础框架
+
+#### 🎯 学习目标
+
+通过本迭代，您将学会：
+- HTML5文档的基本结构（DOCTYPE、head、body）
+- CSS变量（自定义属性）的定义和使用方法
+- 响应式设计的viewport配置
+- 语义化HTML标签的使用（header、section）
+- 建立统一的配色体系和视觉风格
+
+#### 📚 先决知识要求
+
+- 已完成迭代1-3（环境、数据探索、Chart.js下载）
+- 了解基本的HTML概念（标签、属性）
+- 了解基本的CSS概念（选择器、属性-值）
+- 无需HTML/CSS实战经验，本迭代将从零开始
 
 #### 📝 业务需求
 
@@ -249,28 +359,36 @@ Key columns for business questions:
 - 语义化标签提升代码可读性和可维护性
 - 移动优先的viewport设置保证手机端显示
 
-#### ✅ 预期成果
+#### ✅ 验收标准
 
-创建 `data-dashboard.html` 文件，浏览器打开后显示：
+**必须满足以下所有条件才算完成本迭代**：
 
-1. **页面标题**：
-   - 主标题（深橙色）：Agentic AI Performance Dashboard
-   - 副标题（灰色）：AI智能体性能数据看板
+1. **文件创建验证**：
+   - 项目根目录下存在 `data-dashboard.html` 文件
+   - 文件包含完整的HTML5文档结构（DOCTYPE、html、head、body）
 
-2. **数据概览卡片**（白色背景，橙色阴影）：
-   - 显示：Dataset Records | 数据集记录数: **80**
+2. **浏览器显示验证**：
+   - 双击打开HTML文件，浏览器能正常显示页面（无报错）
 
-3. **整体视觉**：
-   - 浅杏仁色背景（#FFF5E6）
-   - 卡片有圆角和淡橙色阴影
-   - 文字清晰可读，中英双语
+3. **标题显示验证**：
+   - 页面顶部显示主标题：**"Agentic AI Performance Dashboard"**（深橙色，大字）
+   - 主标题下方显示副标题：**"AI智能体性能数据看板"**（灰色，小字）
 
-**此时页面结构**：
-```html
-<header>标题区</header>
-<div class="info-card">数据概览：80条记录</div>
-<!-- 图表区域将在后续迭代添加 -->
-```
+4. **数据概览卡片验证**：
+   - 标题下方显示白色卡片
+   - 卡片内容：**"Dataset Records | 数据集记录数: 80"**（80是粗体）
+   - 卡片有圆角和淡橙色阴影效果
+
+5. **配色方案验证**：
+   - 页面整体背景为**浅杏仁色**（#FFF5E6或接近颜色）
+   - 主标题颜色为**深橙色**（#FF6F00或接近颜色）
+   - 视觉整体温暖、清新
+
+6. **响应式配置验证**：
+   - 查看HTML源代码，`<head>`中包含：`<meta name="viewport" content="width=device-width, initial-scale=1.0">`
+
+7. **CSS变量验证**：
+   - 查看HTML源代码，`<style>`中包含`:root`块，定义了CSS变量（如`--bg-primary`、`--orange-main`）
 
 #### 💡 技术要点
 
@@ -282,6 +400,21 @@ Key columns for business questions:
 ---
 
 ### 迭代5：Python分析问题1
+
+#### 🎯 学习目标
+
+通过本迭代，您将学会：
+- pandas的分组聚合操作（groupby + agg）
+- 计算分组内的百分比统计
+- 数据排序和Top N提取
+- 将分析结果导出为JSON格式
+
+#### 📚 先决知识要求
+
+- 已完成迭代1-4（环境、数据探索、Chart.js、HTML框架）
+- 熟悉迭代2中探索的数据结构
+- 了解基本的Python语法（变量、函数调用）
+- 了解百分比计算的基本概念
 
 #### 📝 业务需求
 
@@ -306,41 +439,36 @@ Key columns for business questions:
 - groupby是pandas处理分组统计的标准方法
 - 导出JSON是为了后续嵌入HTML
 
-#### ✅ 预期成果
+#### ✅ 验收标准
 
-创建或更新 `analyze_data.py` 脚本，运行后：
+**必须满足以下所有条件才算完成本迭代**：
 
-**终端输出**：
-```
-=== QUESTION 1: Top 3 Agent Types by Multimodal Capability % ===
+1. **文件创建/更新验证**：
+   - 项目根目录下存在 `analyze_data.py` 文件
+   - 文件包含问题1的分析代码（groupby、agg、百分比计算）
 
-1. Research Assistant
-   - Multimodal: 3 out of 5
-   - Percentage: 60.00%
+2. **脚本运行验证**：
+   - 运行命令：`./venv/bin/python analyze_data.py`
+   - 脚本无报错，成功执行完成
 
-2. Document Processor
-   - Multimodal: 2 out of 6
-   - Percentage: 33.33%
+3. **终端输出验证**：
+   - 输出显示标题：**"QUESTION 1: Top 3 Agent Types by Multimodal Capability %"**
+   - 输出显示Top 3结果，排名第1的是：**Research Assistant (60.00%)**
+   - 输出显示排名第2的是：**Document Processor (33.33%)**
+   - 输出显示排名第3的是：**Sales Assistant (28.57%)**
+   - 每个结果包含"Multimodal: X out of Y"的明细信息
 
-3. Sales Assistant
-   - Multimodal: 2 out of 7
-   - Percentage: 28.57%
-```
+4. **JSON文件生成验证**：
+   - 项目根目录下生成了 `question1_data.json` 文件
+   - 运行命令：`cat question1_data.json | head -10`
+   - 文件包含有效的JSON格式数据
+   - JSON中包含"top3"键，值为包含3个对象的数组
+   - 每个对象包含字段：agent_type, multimodal_count, total_count, multimodal_percentage
 
-**生成文件**：`question1_data.json`
-```json
-{
-  "top3": [
-    {
-      "agent_type": "Research Assistant",
-      "multimodal_count": 3,
-      "total_count": 5,
-      "multimodal_percentage": 60.0
-    },
-    ...
-  ]
-}
-```
+5. **数据准确性验证**：
+   - Research Assistant的百分比为 **60.0** (3/5)
+   - Document Processor的百分比为 **33.33** (2/6)
+   - Sales Assistant的百分比为 **28.57** (2/7)
 
 #### 💡 技术要点
 
@@ -352,6 +480,23 @@ Key columns for business questions:
 ---
 
 ### 迭代6：将数据嵌入HTML并创建基础图表
+
+#### 🎯 学习目标
+
+通过本迭代，您将学会：
+- 理解HTML中的`<canvas>`元素及其用途
+- 掌握JavaScript数据对象的定义和嵌入方法
+- 学会Chart.js的基础配置和初始化
+- 理解水平柱状图(indexAxis: 'y')的配置方式
+- 掌握从JSON数据到图表渲染的完整流程
+
+#### 📚 先决知识要求
+
+- 已完成迭代1-5（环境、数据探索、Chart.js、HTML框架、Python分析）
+- 了解基本的JavaScript语法（对象、数组、函数）
+- 了解HTML中`<script>`标签的作用
+- question1_data.json文件已生成
+- 能够在浏览器中打开HTML文件并查看效果
 
 #### 📝 业务需求
 
@@ -379,30 +524,38 @@ Key columns for business questions:
 - 智能体名称较长（如"Research Assistant"），水平布局更易阅读
 - 手机屏幕宽度有限，水平图表更适合移动端
 
-#### ✅ 预期成果
+#### ✅ 验收标准
 
-更新 `data-dashboard.html`，浏览器打开后显示：
+**必须满足以下所有条件才算完成本迭代**：
 
-1. 页面顶部：标题 + 数据概览卡片（延续迭代4）
-2. **新增：图表区域1**
-   - 标题：Question 1: Top 3 Agent Types by Multimodal Capability %
-   - **水平柱状图**，显示3根柱子：
-     - Research Assistant - 60%
-     - Document Processor - 33.33%
-     - Sales Assistant - 28.57%
-   - 柱子颜色：灰色（基础版，下个迭代会改为橙色）
-   - 无动画效果
+1. **文件更新验证**：
+   - `data-dashboard.html` 文件已更新
+   - 文件中包含Chart.js库代码（可通过搜索"Chart.js v4.4.0"确认）
+   - 文件中包含question1的数据对象（JavaScript格式）
 
-**页面结构变化**：
-```html
-<header>...</header>
-<div class="info-card">...</div>
-<!-- 新增 -->
-<section class="chart-section">
-  <h3>Question 1: Top 3 Agent Types...</h3>
-  <canvas id="chart1"></canvas>
-</section>
-```
+2. **浏览器显示验证**：
+   - 刷新浏览器，页面能正常显示（无JavaScript错误）
+   - 页面顶部的标题和数据概览卡片依然存在（迭代4的内容保留）
+
+3. **图表区域验证**：
+   - 页面新增图表区域，标题为：**"Question 1: Top 3 Agent Types by Multimodal Capability %"**
+   - 图表区域包含一个`<canvas>`元素（id="chart1"）
+
+4. **图表显示验证**：
+   - 浏览器显示**水平柱状图**（柱子横向排列）
+   - 显示**3根柱子**，对应3个智能体类型
+   - Y轴标签（从上到下）：Research Assistant、Document Processor、Sales Assistant
+   - 柱子长度正确反映百分比：60%、33.33%、28.57%
+
+5. **基础版本确认**：
+   - 柱子颜色为默认灰色或简单颜色（非橙色系）
+   - 页面加载时图表直接显示（无增长动画）
+   - 鼠标悬停无特殊效果（基础tooltip或无tooltip）
+
+6. **HTML结构验证**：
+   - 查看源代码，确认新增了`<section class="chart-section">`
+   - section内包含标题和canvas元素
+   - JavaScript代码中包含`new Chart(...)`初始化语句
 
 #### 💡 技术要点
 
@@ -418,6 +571,23 @@ Key columns for business questions:
 ---
 
 ### 迭代7：添加样式（温暖橙色系）
+
+#### 🎯 学习目标
+
+通过本迭代，您将学会：
+- 掌握Chart.js的颜色配置方法
+- 学会统一配色方案的应用
+- 理解图表视觉元素的样式控制
+- 掌握CSS阴影和圆角的视觉设计技巧
+- 理解半透明颜色(rgba)在视觉设计中的应用
+
+#### 📚 先决知识要求
+
+- 已完成迭代1-6（图表1的基础版本已创建）
+- 了解CSS基础（颜色、边框、阴影）
+- 了解十六进制颜色代码（如#FF9800）
+- 了解rgba()半透明颜色的概念
+- 能够修改JavaScript对象的属性值
 
 #### 📝 业务需求
 
@@ -443,19 +613,36 @@ Key columns for business questions:
 - 浅色背景+深色强调保证可读性
 - 半透明阴影和网格线保持视觉层次
 
-#### ✅ 预期成果
+#### ✅ 验收标准
 
-更新 `data-dashboard.html`，浏览器刷新后：
+**必须满足以下所有条件才算完成本迭代**：
 
-1. **图表1的柱子变为橙色**（#FF9800），边框为深橙色（#FF6F00）
-2. **柱子有圆角**（更现代的视觉）
-3. **图表区域卡片有淡橙色阴影**
-4. **X轴网格线为淡橙色**，不再是默认的灰色
-5. **整体视觉**：温暖、清新、统一
+1. **文件更新验证**：
+   - `data-dashboard.html` 文件已更新
+   - JavaScript代码中chart1的配置包含颜色属性（backgroundColor, borderColor）
 
-**视觉对比**：
-- 迭代6：灰色柱子，无圆角，生硬
-- 迭代7：橙色柱子，有圆角，温暖
+2. **柱子颜色验证**：
+   - 刷新浏览器，图表1的柱子颜色为**橙色**（#FF9800或视觉上的橙色）
+   - 柱子有**深橙色边框**（#FF6F00或更深的橙色）
+   - 边框宽度明显可见（约2px）
+
+3. **柱子圆角验证**：
+   - 柱子的右侧两个角为**圆角**（不是直角）
+   - 圆角半径约6px，视觉上柔和自然
+
+4. **卡片阴影验证**：
+   - 图表区域的白色卡片有**淡橙色阴影**效果
+   - 阴影颜色为半透明橙色（rgba(255, 152, 0, 0.1)或接近）
+   - 阴影位置在卡片下方和右侧
+
+5. **网格线颜色验证**：
+   - X轴（水平方向）的网格线为**淡橙色**，不再是默认灰色
+   - 网格线颜色与阴影协调统一
+
+6. **整体视觉验证**：
+   - 页面配色统一：背景浅杏仁色、柱子橙色、标题深橙色
+   - 视觉感受：温暖、清新、专业
+   - 与迭代6对比：从"灰色生硬"变为"橙色温暖"
 
 #### 💡 技术要点
 
@@ -475,6 +662,23 @@ Key columns for business questions:
 ---
 
 ### 迭代8：添加动画和交互效果
+
+#### 🎯 学习目标
+
+通过本迭代，您将学会：
+- 掌握Chart.js动画配置（duration、easing）
+- 学会自定义tooltip回调函数
+- 理解缓动函数对用户体验的影响
+- 掌握JavaScript函数和数组索引的使用
+- 理解动画和交互对数据可视化的价值
+
+#### 📚 先决知识要求
+
+- 已完成迭代1-7（图表1已有橙色样式）
+- 了解基本的JavaScript函数概念
+- 了解动画的基本概念（时长、效果）
+- 了解用户交互的重要性
+- 能够修改JavaScript对象的嵌套属性
 
 #### 📝 业务需求
 
@@ -501,20 +705,38 @@ Key columns for business questions:
 - Tooltip提供详细信息而不占用页面空间
 - 缓动函数让动画更自然（而不是匀速）
 
-#### ✅ 预期成果
+#### ✅ 验收标准
 
-更新 `data-dashboard.html`，浏览器刷新后：
+**必须满足以下所有条件才算完成本迭代**：
 
-1. **加载动画**：页面打开时，图表的柱子从0慢慢增长到目标值（1.5秒）
-2. **悬停效果**：
-   - 鼠标悬停在"Research Assistant"柱子上时
-   - 显示橙色tooltip框：
-     ```
-     Multimodal Capability % | 多模态能力占比
-     Percentage: 60.00%
-     Multimodal: 3 / 5
-     ```
-3. **动画效果**：先快后慢（easeOutQuart），视觉更自然
+1. **文件更新验证**：
+   - `data-dashboard.html` 文件已更新
+   - JavaScript代码中chart1的配置包含 `options.animation` 对象
+   - JavaScript代码中包含 `plugins.tooltip.callbacks.label` 函数
+
+2. **加载动画验证**：
+   - **刷新浏览器**（或按Ctrl+Shift+R强制刷新）
+   - 图表的柱子从**0慢慢增长到目标值**
+   - 动画持续时间约**1.5秒**
+   - 动画效果为**先快后慢**（不是匀速）
+
+3. **悬停tooltip验证**：
+   - 鼠标悬停在任意柱子上（如"Research Assistant"）
+   - 显示**橙色tooltip框**（背景色为橙色半透明）
+   - Tooltip显示**多行信息**：
+     - 第1行：标签名称或说明
+     - 第2行：**Percentage: 60.00%**（或对应的百分比）
+     - 第3行：**Multimodal: 3 / 5**（或对应的明细）
+
+4. **tooltip交互验证**：
+   - 鼠标移开柱子时，tooltip消失
+   - 鼠标移动到不同柱子时，tooltip显示对应数据
+   - Tooltip文字清晰可读（字体大小合适）
+
+5. **动画自然度验证**：
+   - 观察动画效果，柱子增长速度不是恒定的
+   - 开始时增长较快，接近目标值时减速
+   - 整体视觉感受：流畅、自然、专业
 
 #### 💡 技术要点
 
@@ -550,6 +772,23 @@ Key columns for business questions:
 
 ### 迭代9：实现问题2（大模型架构多模态占比）
 
+#### 🎯 学习目标
+
+通过本迭代，您将学会：
+- 学会技术复用和代码迁移
+- 巩固pandas分组分析的技能
+- 体会举一反三的学习方法
+- 掌握多图表页面的组织方式
+- 理解代码模式的抽象和应用
+
+#### 📚 先决知识要求
+
+- 已完成迭代1-8（问题1完整实现）
+- 熟悉迭代5-8的技术流程
+- 理解问题1和问题2的相似性
+- 能够独立修改变量名和数据源
+- 了解代码复制粘贴的最佳实践
+
 #### 📝 业务需求
 
 分析第二个业务问题：在所有大模型架构中，支持多模态处理的模型在该架构内的占比，找出占比最高的前三种大模型架构（Top 3），并在HTML看板中添加第二个图表展示结果。
@@ -576,33 +815,44 @@ Key columns for business questions:
   - 数据源：`question2Data.top3`
   - 标题：Question 2相关
 
-#### ✅ 预期成果
+#### ✅ 验收标准
 
-更新 `analyze_data.py` 和 `data-dashboard.html`，运行Python脚本后：
+**必须满足以下所有条件才算完成本迭代**：
 
-**终端输出**：
-```
-=== QUESTION 2: Top 3 Model Architectures by Multimodal Capability % ===
+1. **Python文件更新验证**：
+   - `analyze_data.py` 文件已更新，包含问题2的分析代码
+   - 运行命令：`./venv/bin/python analyze_data.py`
+   - 脚本无报错，成功执行
 
-1. GPT-4o
-   - Multimodal: 3 out of 8
-   - Percentage: 37.50%
+2. **Python输出验证**：
+   - 终端输出包含：**"QUESTION 2: Top 3 Model Architectures by Multimodal Capability %"**
+   - 排名第1：**GPT-4o (37.50%)**
+   - 排名第2：**CodeT5+ (33.33%)**
+   - 排名第3：**Transformer-XL (20.00%)**
 
-2. CodeT5+
-   - Multimodal: 3 out of 9
-   - Percentage: 33.33%
+3. **JSON文件生成验证**：
+   - 项目根目录下生成了 `question2_data.json` 文件
+   - JSON中包含"top3"键和3个大模型架构的数据
 
-3. Transformer-XL
-   - Multimodal: 2 out of 10
-   - Percentage: 20.00%
-```
+4. **HTML文件更新验证**：
+   - `data-dashboard.html` 文件已更新
+   - 文件中包含question2的数据对象
+   - 文件中包含chart2的初始化代码
 
-**浏览器显示**：
-- 页面现在有 **2个图表**（问题1 + 问题2）
-- 图表2的样式、动画、tooltip与图表1完全一致
-- 显示3个大模型架构的多模态占比
+5. **浏览器显示验证**：
+   - 刷新浏览器，页面现在显示**2个图表**
+   - 图表1（问题1）依然正常显示
+   - 新增图表2，标题为：**"Question 2: Top 3 Model Architectures..."**
 
-**代码复用度**：约80%的代码是复制粘贴，仅修改变量名和标题
+6. **图表2显示验证**：
+   - 图表2显示**3根橙色柱子**（水平布局）
+   - Y轴标签：GPT-4o、CodeT5+、Transformer-XL
+   - 柱子长度正确：37.50%、33.33%、20.00%
+   - 图表2有**增长动画**和**tooltip悬停效果**（与图表1一致）
+
+7. **代码复用验证**：
+   - 查看源代码，chart2的配置与chart1高度相似
+   - 主要差异：canvas ID、数据源、标题文字
 
 #### 💡 技术要点
 
@@ -614,6 +864,23 @@ Key columns for business questions:
 ---
 
 ### 迭代10：实现问题3（任务类型公正性中位数）
+
+#### 🎯 学习目标
+
+通过本迭代，您将学会：
+- 掌握pandas中位数(median)计算方法
+- 学会处理不同数据类型的图表展示
+- 理解Chart.js轴配置的灵活性
+- 体会数据分析中不同统计指标的应用
+- 掌握图表配置的微调技巧
+
+#### 📚 先决知识要求
+
+- 已完成迭代1-9（问题1和2已实现）
+- 理解中位数与平均数的区别
+- 了解问题3的数据类型（0-1的分数，而非百分比）
+- 能够调整Chart.js的轴配置参数
+- 熟悉迭代5-8的完整流程
 
 #### 📝 业务需求
 
@@ -636,34 +903,51 @@ Key columns for business questions:
 - **X轴标签**：去掉 `callback: value => value + '%'`，直接显示数值
 - **tooltip内容**：显示"Median Bias Score: 0.821"而非百分比
 
-#### ✅ 预期成果
+#### ✅ 验收标准
 
-更新 `analyze_data.py` 和 `data-dashboard.html`，运行Python脚本后：
+**必须满足以下所有条件才算完成本迭代**：
 
-**终端输出**：
-```
-=== QUESTION 3: Top 3 Task Categories by Median Bias Detection Score ===
+1. **Python文件更新验证**：
+   - `analyze_data.py` 文件已更新，包含问题3的分析代码（使用median）
+   - 运行命令：`./venv/bin/python analyze_data.py`
+   - 脚本无报错，成功执行
 
-1. Communication
-   - Median score: 0.821
-   - Count: 5 agents
+2. **Python输出验证**：
+   - 终端输出包含：**"QUESTION 3: Top 3 Task Categories by Median Bias Detection Score"**
+   - 排名第1：**Communication (median: 0.821)**
+   - 排名第2：**Research & Summarization (median: 0.785)**
+   - 排名第3：**Decision Making (median: 0.782)**
 
-2. Research & Summarization
-   - Median score: 0.785
-   - Count: 4 agents
+3. **JSON文件生成验证**：
+   - 项目根目录下生成了 `question3_data.json` 文件
+   - JSON中包含"top3"键和中位数数据
 
-3. Decision Making
-   - Median score: 0.782
-   - Count: 5 agents
-```
+4. **HTML文件更新验证**：
+   - `data-dashboard.html` 文件已更新
+   - 文件中包含question3的数据对象
+   - 文件中包含chart3的初始化代码
 
-**浏览器显示**：
-- 页面现在有 **3个图表**（问题1 + 问题2 + 问题3）
-- 图表3显示任务类型的公正性分数（0-1范围）
-- X轴显示0.0, 0.2, 0.4, 0.6, 0.8, 1.0（无百分号）
-- Tooltip显示："Median Bias Score: 0.821"
+5. **浏览器显示验证**：
+   - 刷新浏览器，页面现在显示**3个图表**（所有业务问题完成！）
+   - 图表1和2依然正常显示
+   - 新增图表3，标题为：**"Question 3: Top 3 Task Categories..."**
 
-**至此，所有3个业务问题已完整实现！**
+6. **图表3显示验证**：
+   - 图表3显示**3根橙色柱子**（水平布局）
+   - Y轴标签：Communication、Research & Summarization、Decision Making
+   - 柱子长度正确反映分数：约0.821、0.785、0.782
+
+7. **X轴配置验证**：
+   - X轴范围为**0到1**（不是0到100）
+   - X轴标签显示：**0.0, 0.2, 0.4, 0.6, 0.8, 1.0**（无百分号"%"）
+   - X轴标签为小数格式，不是百分比格式
+
+8. **Tooltip显示验证**：
+   - 鼠标悬停在柱子上
+   - Tooltip显示："**Median Bias Score: 0.821**"（而非百分比）
+   - Tooltip内容准确反映数据类型差异
+
+**重要里程碑**：完成本迭代后，所有3个业务问题的分析和可视化全部完成！
 
 #### 💡 技术要点
 
@@ -683,6 +967,23 @@ Key columns for business questions:
 ---
 
 ### 迭代11：添加双语支持
+
+#### 🎯 学习目标
+
+通过本迭代，您将学会：
+- 理解国际化(i18n)的基本概念
+- 掌握HTML双语内容的组织方式
+- 学会使用lang属性标记语言
+- 理解"标题双语、数据英文"的设计策略
+- 掌握CSS实现双语样式差异化
+
+#### 📚 先决知识要求
+
+- 已完成迭代1-10（3个图表已完整实现）
+- 了解中英文双语的显示需求
+- 了解HTML标签的层级关系
+- 了解CSS样式对不同元素的应用
+- 能够修改HTML结构和CSS样式
 
 #### 📝 业务需求
 
@@ -715,25 +1016,47 @@ Key columns for business questions:
 - 双语标题兼顾可读性（中文）和专业性（英文）
 - 视觉层次：英文主标题+中文副标题，清晰不混乱
 
-#### ✅ 预期成果
+#### ✅ 验收标准
 
-更新 `data-dashboard.html`，浏览器刷新后：
+**必须满足以下所有条件才算完成本迭代**：
 
-1. **页面主标题**变为双语：
-   ```
-   Agentic AI Performance Dashboard  [大字，深橙色]
-   AI智能体性能数据看板             [小字，灰色]
-   ```
+1. **HTML文件更新验证**：
+   - `data-dashboard.html` 文件已更新
+   - 查看源代码，`<html>`标签包含：`lang="zh-CN"`
 
-2. **每个图表区域**都有双语标题：
-   ```
-   Question 1: Top 3 Agent Types by Multimodal Capability %  [英文，大字]
-   问题1：多模态能力占比最高的前三种智能体类型             [中文，小字，灰色]
-   ```
+2. **页面主标题双语验证**：
+   - 刷新浏览器，页面顶部显示**两行标题**
+   - 第1行（英文，大字，深橙色）：**"Agentic AI Performance Dashboard"**
+   - 第2行（中文，小字，灰色）：**"AI智能体性能数据看板"**
 
-3. **数据标签保持英文**：柱状图上仍显示"Research Assistant", "GPT-4o"等
+3. **数据概览卡片双语验证**：
+   - 卡片内容包含：**"Dataset Records | 数据集记录数: 80"**
+   - 英文和中文用"|"分隔，数字80为粗体
 
-4. **整体效果**：中英文用户都能理解，同时保持专业性
+4. **图表标题双语验证**（检查所有3个图表）：
+   - 每个图表都有**两行标题**
+   - 第1行：英文标题（大字，深色）
+   - 第2行：中文标题（小字，灰色）
+   - 图表1中文：**"问题1：多模态能力占比最高的前三种智能体类型"**
+   - 图表2中文：**"问题2：多模态能力占比最高的前三种大模型架构"**
+   - 图表3中文：**"问题3：公正性中位数最高的前三种智能体处理任务"**
+
+5. **数据标签语言验证**：
+   - 图表中的数据标签（Y轴）**保持英文**：
+     - "Research Assistant"（不是"研究助手"）
+     - "GPT-4o"（保持原样）
+     - "Communication"（不是"沟通"）
+
+6. **CSS样式差异验证**：
+   - 查看源代码或浏览器检查器
+   - 英文标题CSS类：`chart-title-en`（字体大、深色）
+   - 中文标题CSS类：`chart-title-cn`（字体小、浅色、font-weight: 400）
+
+7. **整体效果验证**：
+   - 中文用户能理解页面内容（有中文标题）
+   - 英文用户能理解页面内容（有英文标题）
+   - 数据专业术语保持英文（准确性）
+   - 视觉层次清晰（英文主、中文辅）
 
 #### 💡 技术要点
 
@@ -745,6 +1068,23 @@ Key columns for business questions:
 ---
 
 ### 迭代12：移动端响应式优化
+
+#### 🎯 学习目标
+
+通过本迭代，您将学会：
+- 掌握CSS Media Queries的使用方法
+- 理解移动优先设计的理念
+- 学会使用相对单位(rem)进行响应式布局
+- 掌握移动端触摸交互的优化技巧
+- 理解响应式设计的最佳实践
+
+#### 📚 先决知识要求
+
+- 已完成迭代1-11（功能已全部实现）
+- 了解不同设备的屏幕尺寸差异
+- 了解手机浏览器的特点
+- 能够在手机上测试HTML页面
+- 了解CSS的@media规则
 
 #### 📝 业务需求
 
@@ -784,28 +1124,51 @@ Key columns for business questions:
 - 垂直堆叠避免手机屏幕宽度不足的问题
 - 相对单位（rem）随系统字体大小缩放，提升可访问性
 
-#### ✅ 预期成果
+#### ✅ 验收标准
 
-更新 `data-dashboard.html`，在不同设备测试：
+**必须满足以下所有条件才算完成本迭代**：
 
-**1. iPhone（375px宽度）测试**：
-- ✅ 页面完整显示，无横向滚动条
-- ✅ 所有3个图表垂直排列，每个占满屏宽
-- ✅ 文字大小合适（16px基础字体），清晰可读
-- ✅ 柱状图标签完整显示（如"Research Assistant"不被截断）
-- ✅ 触摸柱子可以显示tooltip
+1. **HTML文件更新验证**：
+   - `data-dashboard.html` 文件已更新
+   - CSS代码中包含 `@media (min-width: 768px)` 等media queries
+   - CSS使用rem单位（如 `font-size: 1.8rem`）
 
-**2. iPad（768px宽度）测试**：
-- ✅ 图表高度增加到320px，显示更舒适
-- ✅ 内边距增加，视觉更宽敞
+2. **手机浏览器测试（375px宽度，如iPhone）**：
+   - 在手机浏览器打开HTML文件
+   - **无横向滚动条**：左右滑动无效，内容完全可见
+   - **3个图表垂直排列**：图表从上到下依次显示
+   - **图表占满屏宽**：每个图表宽度接近100%屏宽
+   - **文字清晰可读**：16px基础字体，无需缩放即可阅读
+   - **柱状图标签完整**："Research Assistant"等长文本不被截断
+   - **图表高度适中**：约280px，不过高或过矮
 
-**3. 桌面（1200px+宽度）测试**：
-- ✅ 内容居中，最大宽度1200px
-- ✅ 不会过度拉伸
+3. **手机触摸交互验证**：
+   - 用手指触摸图表柱子，显示tooltip
+   - 触摸空白处可以垂直滚动页面
+   - Chart.js不会阻止页面滚动
 
-**最终验收**：
-- 在手机浏览器打开HTML文件，所有内容完整显示 ✅
-- 符合验收条件3的所有要求 ✅
+4. **平板测试（768px+宽度，如iPad）**：
+   - 在iPad或调整浏览器窗口到768px以上
+   - **图表高度增加**：从280px变为320px（更舒适）
+   - **内边距增加**：从20px变为40px（更宽敞）
+   - **布局依然垂直**：图表仍然垂直排列
+
+5. **桌面浏览器测试（1200px+宽度）**：
+   - 在桌面浏览器打开，全屏显示
+   - **内容居中显示**：左右有空白margin
+   - **最大宽度限制**：内容区域不超过1200px
+   - **不过度拉伸**：即使屏幕很宽，内容也不会过分拉伸
+
+6. **CSS代码验证**：
+   - 查看源代码，确认使用**移动优先**策略
+   - 基础样式针对小屏幕（无media query）
+   - `@media (min-width: 768px)` 增强平板和桌面
+   - 使用rem相对单位而非px固定单位
+
+7. **最终完整验收**：
+   - 在手机、平板、桌面三种设备上都能正常显示 ✅
+   - 符合业务需求文件中**验收条件3的所有要求** ✅
+   - **所有12个迭代全部完成，项目交付！** 🎉
 
 #### 💡 技术要点
 
