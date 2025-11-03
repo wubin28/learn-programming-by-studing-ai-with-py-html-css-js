@@ -11,7 +11,7 @@
 </领域>
 
 <目的>
-请先阅读 @icm-story-2025-11-03--11-03.md 业务需求文件，再阅读当前项目根目录下的 @analyze_data.py 和 data-dashboard.html 源代码，并按照文件名中的时间戳先后顺序阅读本项目根目录下所有以“dialog”开头的markdown文件，以了解之前AI生成html数据看板的经过。然后为我生成一个名为"breakdown-html-data-dashboard-2025-11-03--12-49.md"的迭代式氛围编程需求文件。
+请先阅读 @icm-story-2025-11-03--11-03.md 业务需求文件，再阅读当前项目根目录下的 @analyze_data.py 和 data-dashboard.html (请忽略该文件后半部分的Chart.js Library Embedded代码) 源代码，并按照文件名中的时间戳先后顺序阅读本项目根目录下所有以“dialog”开头的markdown文件，以了解之前AI生成html数据看板的经过。然后为我生成一个名为"breakdown-html-data-dashboard-2025-11-03--12-49.md"的迭代式氛围编程需求文件。
 
 要求这个迭代式氛围编程需求文件的内容：
 - 按照从易到难的顺序排列迭代
