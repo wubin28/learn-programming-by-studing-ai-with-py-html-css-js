@@ -1,0 +1,294 @@
+{
+  "dataset_info": {
+    "total_records": 80,
+    "total_columns": 26
+  },
+  "question1": {
+    "all_data": [
+      {
+        "agent_type": "Research Assistant",
+        "multimodal_count": 3,
+        "total_count": 5,
+        "multimodal_percentage": 60.0
+      },
+      {
+        "agent_type": "Document Processor",
+        "multimodal_count": 2,
+        "total_count": 6,
+        "multimodal_percentage": 33.33333333333333
+      },
+      {
+        "agent_type": "Sales Assistant",
+        "multimodal_count": 2,
+        "total_count": 7,
+        "multimodal_percentage": 28.57142857142857
+      },
+      {
+        "agent_type": "HR Recruiter",
+        "multimodal_count": 1,
+        "total_count": 4,
+        "multimodal_percentage": 25.0
+      },
+      {
+        "agent_type": "Code Assistant",
+        "multimodal_count": 1,
+        "total_count": 5,
+        "multimodal_percentage": 20.0
+      },
+      {
+        "agent_type": "Content Creator",
+        "multimodal_count": 1,
+        "total_count": 5,
+        "multimodal_percentage": 20.0
+      },
+      {
+        "agent_type": "Customer Service",
+        "multimodal_count": 1,
+        "total_count": 6,
+        "multimodal_percentage": 16.666666666666664
+      },
+      {
+        "agent_type": "Data Analyst",
+        "multimodal_count": 1,
+        "total_count": 6,
+        "multimodal_percentage": 16.666666666666664
+      },
+      {
+        "agent_type": "Email Manager",
+        "multimodal_count": 0,
+        "total_count": 3,
+        "multimodal_percentage": 0.0
+      },
+      {
+        "agent_type": "Financial Advisor",
+        "multimodal_count": 0,
+        "total_count": 3,
+        "multimodal_percentage": 0.0
+      },
+      {
+        "agent_type": "Marketing Assistant",
+        "multimodal_count": 0,
+        "total_count": 2,
+        "multimodal_percentage": 0.0
+      },
+      {
+        "agent_type": "Project Manager",
+        "multimodal_count": 0,
+        "total_count": 10,
+        "multimodal_percentage": 0.0
+      },
+      {
+        "agent_type": "QA Tester",
+        "multimodal_count": 0,
+        "total_count": 5,
+        "multimodal_percentage": 0.0
+      },
+      {
+        "agent_type": "Social Media Manager",
+        "multimodal_count": 0,
+        "total_count": 6,
+        "multimodal_percentage": 0.0
+      },
+      {
+        "agent_type": "Task Planner",
+        "multimodal_count": 0,
+        "total_count": 6,
+        "multimodal_percentage": 0.0
+      },
+      {
+        "agent_type": "Translation Agent",
+        "multimodal_count": 0,
+        "total_count": 1,
+        "multimodal_percentage": 0.0
+      }
+    ],
+    "top3": [
+      {
+        "agent_type": "Research Assistant",
+        "multimodal_count": 3,
+        "total_count": 5,
+        "multimodal_percentage": 60.0
+      },
+      {
+        "agent_type": "Document Processor",
+        "multimodal_count": 2,
+        "total_count": 6,
+        "multimodal_percentage": 33.33333333333333
+      },
+      {
+        "agent_type": "Sales Assistant",
+        "multimodal_count": 2,
+        "total_count": 7,
+        "multimodal_percentage": 28.57142857142857
+      }
+    ]
+  },
+  "question2": {
+    "all_data": [
+      {
+        "model_architecture": "GPT-4o",
+        "multimodal_count": 3,
+        "total_count": 8,
+        "multimodal_percentage": 37.5
+      },
+      {
+        "model_architecture": "CodeT5+",
+        "multimodal_count": 3,
+        "total_count": 9,
+        "multimodal_percentage": 33.33333333333333
+      },
+      {
+        "model_architecture": "Transformer-XL",
+        "multimodal_count": 2,
+        "total_count": 10,
+        "multimodal_percentage": 20.0
+      },
+      {
+        "model_architecture": "Gemini-Pro",
+        "multimodal_count": 1,
+        "total_count": 6,
+        "multimodal_percentage": 16.666666666666664
+      },
+      {
+        "model_architecture": "Claude-3.5",
+        "multimodal_count": 1,
+        "total_count": 8,
+        "multimodal_percentage": 12.5
+      },
+      {
+        "model_architecture": "Mixtral-8x7B",
+        "multimodal_count": 1,
+        "total_count": 9,
+        "multimodal_percentage": 11.11111111111111
+      },
+      {
+        "model_architecture": "InstructGPT",
+        "multimodal_count": 1,
+        "total_count": 10,
+        "multimodal_percentage": 10.0
+      },
+      {
+        "model_architecture": "Falcon-180B",
+        "multimodal_count": 0,
+        "total_count": 6,
+        "multimodal_percentage": 0.0
+      },
+      {
+        "model_architecture": "LLaMA-3",
+        "multimodal_count": 0,
+        "total_count": 7,
+        "multimodal_percentage": 0.0
+      },
+      {
+        "model_architecture": "PaLM-2",
+        "multimodal_count": 0,
+        "total_count": 7,
+        "multimodal_percentage": 0.0
+      }
+    ],
+    "top3": [
+      {
+        "model_architecture": "GPT-4o",
+        "multimodal_count": 3,
+        "total_count": 8,
+        "multimodal_percentage": 37.5
+      },
+      {
+        "model_architecture": "CodeT5+",
+        "multimodal_count": 3,
+        "total_count": 9,
+        "multimodal_percentage": 33.33333333333333
+      },
+      {
+        "model_architecture": "Transformer-XL",
+        "multimodal_count": 2,
+        "total_count": 10,
+        "multimodal_percentage": 20.0
+      }
+    ]
+  },
+  "question3": {
+    "all_data": [
+      {
+        "task_category": "Communication",
+        "median_bias_score": 0.8214,
+        "mean_bias_score": 0.83206,
+        "count": 5
+      },
+      {
+        "task_category": "Research & Summarization",
+        "median_bias_score": 0.78535,
+        "mean_bias_score": 0.767075,
+        "count": 4
+      },
+      {
+        "task_category": "Decision Making",
+        "median_bias_score": 0.7816,
+        "mean_bias_score": 0.78162,
+        "count": 5
+      },
+      {
+        "task_category": "Text Processing",
+        "median_bias_score": 0.7786,
+        "mean_bias_score": 0.77135,
+        "count": 12
+      },
+      {
+        "task_category": "Problem Solving",
+        "median_bias_score": 0.76965,
+        "mean_bias_score": 0.7707499999999999,
+        "count": 10
+      },
+      {
+        "task_category": "Data Analysis",
+        "median_bias_score": 0.7478,
+        "mean_bias_score": 0.7623777777777777,
+        "count": 9
+      },
+      {
+        "task_category": "Creative Writing",
+        "median_bias_score": 0.74495,
+        "mean_bias_score": 0.7821,
+        "count": 14
+      },
+      {
+        "task_category": "Planning & Scheduling",
+        "median_bias_score": 0.73185,
+        "mean_bias_score": 0.748125,
+        "count": 8
+      },
+      {
+        "task_category": "Code Generation",
+        "median_bias_score": 0.7047,
+        "mean_bias_score": 0.7365,
+        "count": 5
+      },
+      {
+        "task_category": "Learning & Adaptation",
+        "median_bias_score": 0.69205,
+        "mean_bias_score": 0.7213125,
+        "count": 8
+      }
+    ],
+    "top3": [
+      {
+        "task_category": "Communication",
+        "median_bias_score": 0.8214,
+        "mean_bias_score": 0.83206,
+        "count": 5
+      },
+      {
+        "task_category": "Research & Summarization",
+        "median_bias_score": 0.78535,
+        "mean_bias_score": 0.767075,
+        "count": 4
+      },
+      {
+        "task_category": "Decision Making",
+        "median_bias_score": 0.7816,
+        "mean_bias_score": 0.78162,
+        "count": 5
+      }
+    ]
+  }
+}
